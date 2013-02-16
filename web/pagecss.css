@@ -1,0 +1,16 @@
+/* 
+    Document   : pagecss
+    Created on : Feb 16, 2013, 3:43:26 PM
+    Author     : production
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+
+html{
+    margin-left: 50px;
+}
+

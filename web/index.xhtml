@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Facelet Practice</title>
+    </h:head>
+    <h:body>
+        <h1>My First JSF Project</h1>
+        
+        <h:form>
+            Enter your First name: <h:inputText id="fName" value="#{dataBean.firstName}"></h:inputText><br />
+            Enter your Last name: <h:inputText id="lName" value="#{dataBean.lastName}"></h:inputText><br />
+            <!--Stay on the same page to get results -->
+            <h:commandButton value="Process Name">
+                <f:ajax execute="fName lName" render="output"></f:ajax>
+            </h:commandButton>
+            <p><h:outputText id="output" value="#{dataBean.theIdentity}"></h:outputText></p>
+            
+        </h:form>
+        <hr />
+        
+        <h:form>
+            <h3>Pick your favorite Sci-Fi Show:</h3>            
+            <h:selectManyCheckbox value="#{dataBean.show}">
+                <f:selectItems value="#{dataBean.theShowList}" var="s"
+                               itemLabel="#{s.showLabel}"  itemValue="#{s.showValue}"/>
+                
+            </h:selectManyCheckbox>
+            <!--Display results of choice on a new page-->
+            <h:commandButton value="Selections Made" action="shows" />
+
+        </h:form>
+    </h:body>
+</html>
+
