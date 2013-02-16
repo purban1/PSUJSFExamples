@@ -2,12 +2,14 @@ package beans;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import models.Identity;
+import models.Number;
 import models.TvShow;
 
 /**
@@ -19,7 +21,8 @@ import models.TvShow;
 public class RawDataBean {
     
     private Identity theId = new Identity();
-    public String[] show;
+    private String[] show;
+    public String[] numberList;
     
     public RawDataBean() {
     }
@@ -35,9 +38,27 @@ public class RawDataBean {
         newShow.add(new TvShow("Star Trek Voyager", "Voyager"));
         newShow.add(new TvShow("Stargate", "Stargate"));
         newShow.add(new TvShow("Doctor Who", "Doctor Who"));
+        newShow.add(new TvShow("Bones", "Bones"));
+        newShow.add(new TvShow("Fringe", "Fringe"));
         
         return newShow;
     }
+    
+    private List<Number> createNumberLists(){
+        List<Number> number = new ArrayList<Number>();
+        number.add(new Number("2"));
+        number.add(new Number("4"));
+        number.add(new Number("5"));
+        number.add(new Number("8"));
+        number.add(new Number("10"));
+        
+        return number;
+    }
+    
+    public List<Number> getTheNumberList(){
+        return this.createNumberLists();
+    }
+
     
 
     public String getTheIdentity(){
@@ -53,6 +74,23 @@ public class RawDataBean {
     public String getShowChoiceResults(){  
         return Arrays.toString(show);
     }
+
+    public String getNumberChoiceResults(){  
+        String results="";
+        int length = numberList.length;
+        
+        /* 
+         * Use a loop here instead of 'Arrays.toString(array name)
+         * to avoid getting '[ ]' around the results.
+         */
+        for (int i=0; i<length; i++){
+            results += numberList[i];
+            if (i < length-1){
+                results += ", ";
+            }
+        }
+        return results;
+    }
     
     public String getFirstName() {
         return theId.getFirstNameValue();
@@ -63,11 +101,11 @@ public class RawDataBean {
     }
 
     public void setFirstName(String fName) {
-        theId.setFirstNameValue(fName);
+        theId.setFirstNameValue(fName.trim());
     }
 
     public void setLastName(String lName) {
-        theId.setLastNameValue(lName);
+        theId.setLastNameValue(lName.trim());
     }
 
     /**
@@ -82,6 +120,20 @@ public class RawDataBean {
      */
     public void setShow(String[] show) {
         this.show = show;
+    }
+
+    /**
+     * @return the numberList
+     */
+    public String[] getNumberList() {
+        return numberList;
+    }
+
+    /**
+     * @param numberList the numberList to set
+     */
+    public void setNumberList(String[] numberList) {
+        this.numberList = numberList;
     }
 
 }

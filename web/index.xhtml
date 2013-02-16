@@ -8,15 +8,30 @@
     </h:head>
     <h:body>
         <h1>My First JSF Project</h1>
-        
+        <h:outputStylesheet library="css" name="page_styles.css" />
         <h:form>
-            Enter your First name: <h:inputText id="fName" value="#{dataBean.firstName}"></h:inputText><br />
-            Enter your Last name: <h:inputText id="lName" value="#{dataBean.lastName}"></h:inputText><br />
+            Enter your First name: 
+            <h:inputText id="fName" value="#{dataBean.firstName}" 
+                         size ="30" 
+                         required="true"
+                         label="First Name" >
+                 
+            </h:inputText><br /> 
+            
+            <h:message for="fName" style="color: red; margin: 6px" />
+            
+            Enter your Last name: 
+            <h:inputText id="lName" value="#{dataBean.lastName}" 
+                         size ="30"
+                         required="true"
+                         label="Last Name" /><br />
+            <h:message for="lName" style="color: red; margin: 6px" />
+            
             <!--Stay on the same page to get results -->
             <h:commandButton value="Process Name">
                 <f:ajax execute="fName lName" render="output"></f:ajax>
             </h:commandButton>
-            <p><h:outputText id="output" value="#{dataBean.theIdentity}"></h:outputText></p>
+            <p><h:outputText id="output" value="#{dataBean.theIdentity}" ></h:outputText></p>
             
         </h:form>
         <hr />
@@ -30,6 +45,16 @@
             </h:selectManyCheckbox>
             <!--Display results of choice on a new page-->
             <h:commandButton value="Selections Made" action="shows" />
+
+        </h:form>
+        <hr />
+        <h:form>
+            <h3>Select you favorite Numbers</h3>
+            <h:selectManyCheckbox id="numberList" value="#{dataBean.numberList}">
+                <f:selectItems value="#{dataBean.theNumberList}" var="n"
+                               itemLabel="#{n.number}" itemValue="#{n.number}"/>
+            </h:selectManyCheckbox>
+            <h:commandButton value="Submit" action="results" />
 
         </h:form>
     </h:body>
