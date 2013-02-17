@@ -8,6 +8,7 @@
     </h:head>
     <h:body>
         <h1>My First JSF Project</h1>
+        <
         <h:form>
             Enter your First name: 
             <h:inputText id="fName" value="#{dataBean.firstName}" 
@@ -44,6 +45,22 @@
             </h:selectManyCheckbox>
             <!--Display results of choice on a new page-->
             <h:commandButton value="Selections Made" action="shows" />
+            
+
+        </h:form>
+        <hr />
+        <h:form id="Sci-Fi">
+            <h3>Pick your favorite Sci-Fi Show:</h3>
+            <p>Make the selection with a multi-select list box.</p>
+            <h:selectManyListbox  value="#{dataBean.show}">
+                <f:selectItems value="#{dataBean.theShowList}" var="s"
+                               itemLabel="#{s.showLabel}"  itemValue="#{s.showValue}" />
+                
+            </h:selectManyListbox>
+            <p />
+            <!--Display results of choice on a new page-->
+            <h:commandButton value="Selections Made" action="shows" />
+            <!-- <h:commandButton value="Reset"  action="reset" /> -->
 
         </h:form>
         <hr />
