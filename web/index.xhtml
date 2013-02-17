@@ -8,7 +8,6 @@
     </h:head>
     <h:body>
         <h1>My First JSF Project</h1>
-        <h:outputStylesheet library="css" name="page_styles.css" />
         <h:form>
             Enter your First name: 
             <h:inputText id="fName" value="#{dataBean.firstName}" 
@@ -56,6 +55,23 @@
             </h:selectManyCheckbox>
             <h:commandButton value="Submit" action="results" />
 
+        </h:form>
+        <hr />
+        <h:form>
+            <h3>Time for a meal...</h3>
+            For you meal: <h:selectOneRadio id="mainMeal" value="#{foodBean.dinner}">
+                <f:selectItems value="#{foodBean.theMealMenu}" var="m" 
+                               itemLabel="#{m.item}" itemValue="#{m.item}" />
+            </h:selectOneRadio>
+            To drink: <h:selectOneRadio id="beverage" value="#{foodBean.beverage}">
+                <f:selectItems value="#{foodBean.theBeverageMenu}" var="b"
+                               itemLabel="#{b.item}" itemValue="#{b.item}" />
+            </h:selectOneRadio>
+            And for dessert: <h:selectOneRadio id="dessert" value="#{foodBean.dessert}">
+                <f:selectItems value="#{foodBean.theDessertMenu}" var="d"
+                               itemLabel="#{d.item}" itemValue="#{d.item}" />
+            </h:selectOneRadio>
+            <h:commandButton value="Submit" action="menu_results" />
         </h:form>
     </h:body>
 </html>

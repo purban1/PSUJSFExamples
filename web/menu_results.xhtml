@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <head>
+        <title>Dinner Was Served</title>
+    </head>
+    <body>
+        <h2>Your meal consisted of:</h2>
+        <p style="margin-bottom: 0px; margin-top: 3px"><h:outputText value="#{foodBean.mealSelection}">
+        </h:outputText></p>
+        <p style="margin-bottom: 0px; margin-top: 3px"><h:outputText value="#{foodBean.beverageSelection}">
+        </h:outputText></p>
+        <p style="margin-bottom: 0px; margin-top: 3px"><h:outputText value="#{foodBean.dessertSelection}">
+        </h:outputText></p>
+        <p style="margin-bottom: 0px; margin-top: 3px; font-weight: bold">The total cost of the meal was <h:outputText value="#{foodBean.total}">
+        </h:outputText></p>
+    </body>
+</html>
